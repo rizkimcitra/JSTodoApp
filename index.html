@@ -1,28 +1,77 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- Primary Meta Tags -->
+
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Todo App</title>
+    <title>JSTodoApp</title>
+    <meta name="title" content="JSTodoApp" />
+    <meta name="description" content="JSTodoApp is a web-based application created to manage your to-do lists, easy to use, and can be accessed on mobile devices, laptops, computers and even smart TVs, made with JavaScript and SASS." />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jstodo.vercel.app/" />
+    <meta property="og:title" content="JSTodoApp" />
+    <meta
+      property="og:description"
+      content="JSTodoApp is a web-based application created to manage your to-do lists, easy to use, and can be accessed on mobile devices, laptops, computers and even smart TVs, made with JavaScript and SASS."
+    />
+    <meta property="og:image" content="https://jstodo.vercel.app/img/pv.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="https://jstodo.vercel.app/img/pv.jpg" />
+    <meta property="twitter:url" content="https://jstodo.vercel.app/" />
+    <meta property="twitter:title" content="JSTodoApp" />
+    <meta
+      property="twitter:description"
+      content="JSTodoApp is a web-based application created to manage your to-do lists, easy to use, and can be accessed on mobile devices, laptops, computers and even smart TVs, made with JavaScript and SASS."
+    />
+    <meta property="twitter:image" content="https://jstodo.vercel.app/img/pv.jpg" />
+
+    <!-- End Meta Tag -->
+
+    <!-- styleSheet start -->
+    <link rel="shortcut icon" href="./icons/js-logo.svg" type="image/x-icon" />
     <link rel="stylesheet" href="./style/main.css" />
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet" />
+    <!-- stylesheet end -->
   </head>
   <body id="body">
     <header class="headerNav shadow" id="header">
-      <div class="container btn">Button Toggle Nav Menu</div>
+      <div class="btnSideBar" id="btnSideBar">
+        <i class="bx bx-menu-alt-left"></i>
+      </div>
       <div class="container">
-        <div class="darkMode moon" id="toggler"></div>
+        <div class="darkMode" id="toggler" hidden></div>
         <div class="logo">Basic - Todo</div>
       </div>
     </header>
+
+    <aside class="sideBar" id="sideBar">
+      <div class="closeBtn" id="closeBtn"><i class="bx bx-x"></i></div>
+      <img src="./img/profile.jpg" alt="Rizki Maulana Citra" />
+
+      <div class="textArea">
+        <h2 class="heading">Rizki Maulana Citra</h2>
+        <p class="about">Hello There! Thank you for visiting this webiste, im Rizki Maulana Citra, and im the person who made this website. This website is also open source, you can see it in my Github Profile.</p>
+
+        <div class="list__links">
+          <a href="https://facebook.com/mlnzyx" target="_blank"><i class="bx bxl-facebook"></i></a>
+          <a href="https://github.com/mlnzyx" target="_blank"><i class="bx bxl-github"></i></a>
+          <a href="https://instagram.com/mlnzyx" target="_blank"><i class="bx bxl-instagram-alt"></i></a>
+        </div>
+      </div>
+    </aside>
 
     <main id="main">
       <div class="container">
         <div class="greet">
           <span>Hello There! <span id="userName"></span></span>
-          <p class="centerText" id="centerText-incomplete"><em>Click add button below to add new activity.</em></p>
+          <p class="centerText" id="centerText-incomplete"><em>Click the button below to add new activity.</em></p>
         </div>
 
         <div class="content">
