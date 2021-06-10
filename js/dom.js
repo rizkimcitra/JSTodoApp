@@ -1,6 +1,7 @@
 const floatingButton = document.getElementById("btnAddTodo");
 const backDrop = document.querySelector(".backlit");
-const darkModeToggler = document.getElementById("toggler");
+const menuToggler = document.getElementById("btnSideBar");
+const closeMenu = document.getElementById("closeBtn");
 
 // Membuat variable yang berisikan id pada HTML element yang sudah tersedia
 // id untuk daftar yang belum dilakukan atau belum di ceklis
@@ -8,6 +9,19 @@ const INCOMPLETE_TODO = "incompleteTodo";
 // id untuk daftar yang sudah dilakukan atau sudah di ceklis
 const COMPLETE_TODO = "completeTodo";
 const TODO_ITEMID = "itemId";
+
+const openSideBar = () => {
+  const mainArea = document.getElementById("main");
+  const sideBar = document.getElementById("sideBar");
+  mainArea.classList.add("shifted");
+  sideBar.classList.add("shifted");
+};
+const closeSideBar = () => {
+  const mainArea = document.getElementById("main");
+  const sideBar = document.getElementById("sideBar");
+  mainArea.classList.remove("shifted");
+  sideBar.classList.remove("shifted");
+};
 
 const openForm = () => {
   const formArea = document.getElementById("form");
@@ -37,7 +51,7 @@ const makeTodo = (data, timestamp, isCompleted) => {
   textContainer.append(textTitle, textTimestamp);
 
   const container = document.createElement("div");
-  container.classList.add("item", "shadow", "bd-rad");
+  container.classList.add("item", "bd-rad");
   container.append(textContainer);
 
   if (isCompleted) {
@@ -60,7 +74,6 @@ const createTrashButton = () => {
     removeTaskFromCompleted(event.target.parentElement);
   });
 };
-
 const createCheckButton = () => {
   return createButton("btnTodo__check", (event) => {
     addTaskToCompleted(event.target.parentElement);
@@ -167,3 +180,5 @@ floatingButton.addEventListener("click", () => {
     backDropArea.remove();
   });
 });
+menuToggler.addEventListener("click", openSideBar);
+closeMenu.addEventListener("click", closeSideBar);
