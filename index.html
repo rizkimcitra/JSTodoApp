@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="stylesheet" href="./style/main.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body id="body">
+    <header class="headerNav shadow" id="header">
+      <div class="container btn">Button Toggle Nav Menu</div>
+      <div class="container">
+        <div class="darkMode moon" id="toggler"></div>
+        <div class="logo">Basic - Todo</div>
+      </div>
+    </header>
+
+    <main id="main">
+      <div class="container">
+        <div class="greet">
+          <span>Hello There! <span id="userName"></span></span>
+          <p class="centerText" id="centerText-incomplete"><em>Click add button below to add new activity.</em></p>
+        </div>
+
+        <div class="content">
+          <div class="list__item" id="incompleteTodo">
+            <h3 class="heading">Current Main Focus</h3>
+          </div>
+          <div class="list__item" id="completeTodo">
+            <h3 class="heading">Completed</h3>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="floating__button shadow" id="btnAddTodo">+</div>
+
+    <form action="" class="formArea" id="form">
+      <h1 class="heading">What is your main focus today?</h1>
+
+      <div class="inputArea">
+        <label for="title">Title</label>
+        <input type="text" name="title" id="title" class="inputStyle bd-rad" autocomplete="off" placeholder="Choose A Title That Will Fit With Your Focus" required />
+
+        <label for="date">Pick a date</label>
+        <input type="date" name="date" id="date" class="inputStyle bd-rad" autocomplete="off" required />
+
+        <div class="buttonArea">
+          <input class="btn goBack bd-rad" type="reset" id="closeForm" value="Cancel" />
+          <input class="btn submit bd-rad" type="submit" value="Add" />
+        </div>
+      </div>
+    </form>
+    <!-- <script src="./js/cookies.js"></script> -->
+    <script src="./js/data.js"></script>
+    <script src="./js/dom.js"></script>
+    <script src="./js/app.js"></script>
+  </body>
+</html>
