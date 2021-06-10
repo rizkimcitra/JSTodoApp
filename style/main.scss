@@ -1,0 +1,592 @@
+//mixin start
+
+@mixin flexRowAllCenter {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+@mixin flexRowBetween {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+@mixin flexColAllCenter {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+}
+//mixin end
+// Fonts and size
+$font: "Poppins", sans-serif;
+$title-fnt: 1.125rem;
+$heading-fnt: 1.325rem;
+$paragraph-fnt: 1rem;
+
+// color
+$primary-clr: hsl(251, 100%, 58%);
+$body-clr: hsl(0, 0%, 98%);
+$heading-clr: hsl(251, 100%, 10%);
+$paragraph-clr: hsl(251, 100%, 5%);
+$link-clr: hsl(251, 100%, 58%);
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: $primary-clr;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: $body-clr;
+  font-family: $font;
+  overflow-x: hidden;
+}
+body.dark {
+  background-color: hsl(240, 33%, 10%);
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+  color: $heading-clr;
+}
+
+p {
+  color: $paragraph-clr;
+}
+
+.bd-rad {
+  border-radius: 0.344rem;
+}
+
+.headerNav {
+  @include flexRowBetween();
+  width: 100vw;
+  background-color: #fff;
+  padding: 1.5rem 1.25rem;
+  height: 5rem;
+  position: fixed;
+  top: 0;
+  z-index: 55;
+  transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+
+  .container {
+    display: flex;
+    align-items: center;
+  }
+  .container > div {
+    margin: 0 0.5rem;
+  }
+  .logo {
+    font-weight: 500;
+    color: $heading-clr;
+  }
+}
+
+.headerNav.dark {
+  background-color: hsl(240, 33%, 19%);
+}
+
+.btnSideBar {
+  cursor: pointer;
+  i {
+    color: $heading-clr;
+    font-size: 2rem;
+  }
+}
+
+.darkMode {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  background: url(../icons/moon-icon.svg) no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.darkMode.sun {
+  background: url(../icons/sun-icon.svg) no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+.floating__button {
+  @include flexRowAllCenter();
+  font-size: 1.5rem;
+  height: 3rem;
+  width: 3rem;
+  position: fixed;
+  bottom: 2.5rem;
+  right: 2.5rem;
+  cursor: pointer;
+  user-select: none;
+  border-radius: 50%;
+  background-color: $primary-clr;
+  color: $body-clr;
+  transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  z-index: 55;
+}
+
+.formArea {
+  position: relative;
+  position: fixed;
+  bottom: 0.75rem;
+  height: auto;
+  width: 100vw;
+  padding: 2.5rem 3.225rem;
+  background-color: $body-clr;
+  box-shadow: 0px 0px 12px 1px hsla(0, 0, 0, 0.1);
+  transform: scale(0);
+  z-index: 60;
+  transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  .heading {
+    font-size: $heading-fnt;
+    font-weight: 600;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+  }
+}
+
+.formArea.isShow {
+  transform: scale(1);
+}
+
+.list__item .heading {
+  font-size: $paragraph-fnt;
+  color: $primary-clr;
+  font-weight: 600;
+  margin: 2.5rem 0 0.25rem 0;
+}
+.inputArea {
+  width: 100%;
+  ::placeholder {
+    opacity: 0.5;
+    transition: opacity 0.2s ease;
+  }
+  label {
+    display: block;
+    font-size: $paragraph-fnt;
+    color: $paragraph-clr;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1px;
+  }
+  input.inputStyle {
+    width: 100%;
+    height: 2.5rem;
+    outline: none;
+    border: none;
+    padding: 0.5rem 1.24rem;
+    margin-bottom: 1.255rem;
+    font-family: $font;
+    letter-spacing: 1px;
+    font-size: 15px;
+    color: $paragraph-clr;
+    border: 1px solid hsla(0, 0, 0, 0.1055);
+    transition: border 0.2s ease, box-shadow 0.4s ease;
+    &:focus {
+      border: 1px solid $primary-clr;
+    }
+    &:focus::placeholder {
+      opacity: 0.85;
+    }
+  }
+  input[type="text"] {
+    color: $primary-clr;
+    font-size: 16px;
+  }
+}
+
+.buttonArea {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 29% 69%;
+  .btn {
+    width: 100%;
+    height: 2rem;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    font-family: $font;
+    font-size: 15px;
+    letter-spacing: 1px;
+  }
+  .btn.submit {
+    margin-left: 1rem;
+    background-color: $primary-clr;
+    color: #fff;
+    transition: 0.9s cubic-bezier(0.075, 0.82, 0.165, 1);
+    &:hover {
+      background-color: hsl(251, 87%, 48%);
+    }
+  }
+  .btn.goBack {
+    margin-right: 1rem;
+    background-color: hsl(251, 100%, 5%);
+    color: #fff;
+  }
+}
+.btnTodo__check {
+  background: url(../icons/check-icon.svg) no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin: 0 0.1rem 0 auto;
+}
+.btnTodo__delete {
+  background: url(../icons/trash-icon.svg) no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin: 0 0.1rem 0 auto;
+}
+.btnTodo__undo {
+  background: url(../icons/undo-icon.svg) no-repeat;
+  background-position: center;
+  background-size: contain;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  outline: none;
+  border: none;
+  margin: 0 0.1rem 0 auto;
+}
+
+main {
+  margin-top: 6rem;
+  padding: 0.5rem 1.75rem;
+  transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  .greet {
+    margin-bottom: 2.5rem;
+  }
+
+  .backlit {
+    position: absolute;
+    cursor: pointer;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    background-color: hsl(210, 96%, 4%);
+    opacity: 0.65;
+    transition: 0.3s ease;
+    z-index: 59;
+  }
+}
+main.shifted {
+  margin-left: 12rem;
+}
+#incompleteTodo .item {
+  background-color: hsl(0, 0%, 100%);
+  @include flexRowBetween();
+  padding: 0.75rem 1.155rem;
+  margin: 0.54rem 0;
+  transition: background-color 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  &:hover {
+    background-color: hsl(0, 0%, 90%);
+  }
+  .contentArea {
+    text-decoration: none;
+  }
+  div.contentArea {
+    flex-basis: 90%;
+  }
+  h2 {
+    font-weight: 500;
+    font-size: $heading-fnt;
+  }
+}
+#completeTodo .item {
+  background-color: hsl(0, 0%, 95%);
+  @include flexRowBetween();
+  padding: 0.75rem 1.155rem;
+  margin: 0.54rem 0;
+  transition: background-color 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  &:hover {
+    background-color: hsl(0, 0%, 90%);
+  }
+  .contentArea {
+    text-decoration: line-through;
+  }
+  div.contentArea {
+    flex-basis: 90%;
+  }
+  h2 {
+    font-weight: 500;
+    font-size: $heading-fnt;
+  }
+}
+.formGreetNewVisitor {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  width: 50rem;
+  z-index: 999;
+}
+.sideBar {
+  position: relative;
+  padding: 0 1.25rem;
+  position: fixed;
+  left: 0;
+  top: 0;
+  height: 100vh;
+  width: 12rem;
+  overflow: hidden;
+  background-color: #fff;
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+  z-index: 59;
+  transform: translate(-100%);
+  transition: 0.4s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+  .closeBtn {
+    position: absolute;
+    cursor: pointer;
+    top: 1.5rem;
+    right: 1.25rem;
+    margin-bottom: 2.5rem;
+    i {
+      font-size: 2rem;
+      color: $heading-clr;
+    }
+  }
+  img {
+    width: 120px;
+    display: block;
+    margin: 4.5rem auto 1.5rem auto;
+  }
+  .heading {
+    font-size: calc(#{$heading-fnt} - 0.4rem);
+    font-weight: 600;
+  }
+  .about {
+    font-size: calc(#{$heading-fnt} - 0.55rem);
+    font-weight: 500;
+    margin: 0.75rem 0;
+  }
+}
+.centerText {
+  opacity: 0.46;
+}
+.closeBtn {
+  i.dark {
+    color: hsl(240, 100%, 95%);
+  }
+}
+.sideBar.shifted {
+  transform: translate(0);
+}
+.list__links {
+  @include flexRowBetween();
+  a {
+    color: $primary-clr;
+    transform: scale(1.5);
+    font-size: calc(#{$heading-fnt} - 0.35rem);
+    transition: transform 0.2s cubic-bezier(0.075, 0.82, 0.165, 1), color 0.4s ease;
+    &:hover {
+      transform: scale(2);
+      color: $primary-clr;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  main {
+    padding: 0.5rem 0.75rem;
+  }
+  main.shifted {
+    margin-left: 0;
+  }
+}
+@media screen and (max-width: 468px) {
+  .headerNav {
+    height: 4rem;
+    padding: 0 0.5rem;
+  }
+
+  .sideBar {
+    width: 50vw;
+    padding: 0 0.75rem;
+    img {
+      width: 70px;
+      margin: 3.5rem auto 1.5rem auto;
+    }
+  }
+
+  main {
+    margin-top: 4.2rem;
+  }
+
+  #incompleteTodo .item {
+    background-color: hsl(0, 0%, 100%);
+    @include flexRowBetween();
+    padding: 0.75rem 1.155rem;
+    margin: 0.54rem 0;
+    transition: background-color 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05), 0 15px 40px rgba(166, 173, 201, 0.2);
+    &:hover {
+      background-color: hsl(0, 0%, 90%);
+    }
+    .contentArea {
+      text-decoration: none;
+    }
+    div.contentArea {
+      flex-basis: 90%;
+    }
+    h2 {
+      font-weight: 500;
+      font-size: calc(#{$heading-fnt} - 0.35rem);
+    }
+    span {
+      font-size: calc(#{$heading-fnt} - 0.65rem);
+    }
+  }
+
+  #completeTodo .item {
+    background-color: hsl(0, 0%, 95%);
+    @include flexRowBetween();
+    padding: 0.75rem 1.155rem;
+    margin: 0.54rem 0;
+    transition: background-color 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    &:hover {
+      background-color: hsl(0, 0%, 90%);
+    }
+    .contentArea {
+      text-decoration: line-through;
+    }
+    div.contentArea {
+      flex-basis: 90%;
+    }
+    h2 {
+      font-weight: 500;
+      font-size: calc(#{$heading-fnt} - 0.35rem);
+    }
+    span {
+      font-size: calc(#{$heading-fnt} - 0.65rem);
+    }
+  }
+
+  .btnTodo__check {
+    background: url(../icons/check-icon.svg) no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    margin: 0 1rem 0 auto;
+  }
+  .btnTodo__delete {
+    background: url(../icons/trash-icon.svg) no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+  }
+  .btnTodo__undo {
+    background: url(../icons/undo-icon.svg) no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    outline: none;
+    border: none;
+    margin: 0 1rem 0 auto;
+  }
+
+  .floating__button {
+    @include flexRowAllCenter();
+    font-size: 1.5rem;
+    height: 2rem;
+    width: 2rem;
+    position: fixed;
+    bottom: 0.25rem;
+    right: unset;
+    left: 50%;
+    transform: translate(-50%, 0);
+    cursor: pointer;
+    user-select: none;
+    border-radius: 50%;
+    background-color: $primary-clr;
+    color: $body-clr;
+    transition: 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    z-index: 55;
+  }
+
+  .formArea {
+    bottom: 0;
+    padding: 1.5rem 0.225rem;
+    box-shadow: none;
+    transform: scale(0);
+
+    .heading {
+      font-size: calc(#{$heading-fnt} - 0.25rem);
+      margin-bottom: 1rem;
+    }
+  }
+
+  .formArea.isShow {
+    transform: scale(1);
+  }
+
+  .inputArea {
+    width: 100%;
+    label {
+      font-size: calc(#{$heading-fnt} - 0.5rem);
+    }
+    input.inputStyle {
+      height: 2rem;
+      padding: 0.5rem 0.75rem;
+      font-size: calc(#{$heading-fnt} - 0.6rem);
+    }
+    input[type="text"] {
+      font-size: calc(#{$heading-fnt} - 0.55rem);
+    }
+  }
+
+  .buttonArea {
+    grid-template-columns: 30% 69%;
+    gap: 0.25rem;
+    .btn {
+      height: 1.95rem;
+      font-size: calc(#{$heading-fnt} - 0.6rem);
+    }
+    .btn.submit {
+      margin-left: 0;
+    }
+    .btn.goBack {
+      margin-right: 0;
+    }
+  }
+}
