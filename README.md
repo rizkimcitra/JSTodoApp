@@ -7,11 +7,11 @@ JSTodoApp is a web-based application created to manage your to-do lists, easy to
 
 [Repo](https://github.com/mlnzyx/JSTodoApp "JSTodoApp")
  </br>
-[Live Preview](https:// "Demo")
+[Live Demo](https:// "Demo")
 
 ## Screenshots
 
-![Home Page](./assets/img/pv.jpg "Home Page")
+![Preview](./img/pv.jpg "Preview Screenshot")
 
 
 ## Made with
